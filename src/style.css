@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+    padding-top: 60px;
+    @media (min-width: 1024px) {
+        padding-top: 72px;
+    }
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    @apply text-sm lg:text-base text-333333;
+}
+
+.btn-B88E2F {
+    @apply py-4 px-10 lg:py-6 lg:px-16 text-white bg-B88E2F inline-flex items-center justify-center text-base font-bold rounded;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.swiper-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+}
+
+.swiper-pagination-bullet {
+    background: transparent;
+    border: 1px solid transparent;
+    opacity: 1;
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-pagination-bullet:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #D8D8D8;
+}
+
+.swiper-pagination-bullet-active {
+    background: transparent;
+    border: 1px solid #B88E2F;
+}
+
+.swiper-pagination-bullet-active:after {
+    background: #B88E2F;
+}
+
+.swiper-button-next,
+.swiper-button-prev{
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #FFF;
+    padding: 12px;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+    font-size: 22px;
+    color: #B88E2F;
+}
