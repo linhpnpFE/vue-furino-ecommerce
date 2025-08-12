@@ -1,6 +1,6 @@
 // src/stores/products.store.ts
 import { defineStore } from "pinia";
-import { products } from "@/data/products";
+import { products } from "@/data/products.typed";
 import type { Product } from "@/types/product";
 
 export const useProductsStore = defineStore("products", {

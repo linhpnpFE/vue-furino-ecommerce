@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref, watch} from "vue";
-import {products} from "@/data/products.js";
+import {products} from "@/data/products.ts";
 
 const props = defineProps({
   limit: Number,

@@ -2,6 +2,11 @@
 node_modules/
 dist/
 .vite/
-.DS_Store
-*.log
+
+# Env & logs
 .env*
+*.log
+.DS_Store
+
+# Editors
+.idea/
