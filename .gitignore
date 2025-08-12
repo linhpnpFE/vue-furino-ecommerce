@@ -1,0 +1,7 @@
+# Node / Vite / Logs
+node_modules/
+dist/
+.vite/
+.DS_Store
+*.log
+.env*
