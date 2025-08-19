@@ -1,14 +1,21 @@
 // src/types/product.ts
 export type ProductTag = "" | "New" | "-30%" | "-50%";
+export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL';
 
 export interface Product {
     id: string;
     name: string;
+    category: string;
     desc: string;
-    thumb: string;           // image URL
-    price: number;           // VND (number)
-    sale?: number | null;    // VND (number) nếu có giảm giá
+    thumb: string;
+    images: string[];
+    size: Size[];
+    color: string[];
+    price: number;
+    sale?: number | null;
     tag?: ProductTag;
+    rating: number;
+    reviewCount: number;
 }
 
 export const formatVND = (value: number) =>

@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref, watch} from "vue";
-import {products} from "@/data/products.ts";
+import {products} from "@/data/products.typed.ts";
 
 const props = defineProps({
   limit: Number,
@@ -71,7 +71,7 @@ watch([sortedProduct, props.perPage], () => {
 </script>
 
 <template>
-  <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4 lg:gap-6 2xl:gap-8">
+  <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:gap-6 2xl:gap-8">
     <div v-for="(item, index) in paginatedProducts"
          :key="item.id"
          class="group relative flex flex-col">
@@ -98,11 +98,11 @@ watch([sortedProduct, props.perPage], () => {
                 <path d="M12 10.6667C11.4747 10.6667 11 10.8734 10.644 11.2047L5.94 8.46671C5.97333 8.31337 6 8.16004 6 8.00004C6 7.84004 5.97333 7.68671 5.94 7.53337L10.64 4.79337C11 5.12671 11.4733 5.33337 12 5.33337C13.1067 5.33337 14 4.44004 14 3.33337C14 2.22671 13.1067 1.33337 12 1.33337C10.8933 1.33337 10 2.22671 10 3.33337C10 3.49337 10.0267 3.64671 10.06 3.80004L5.36 6.54004C5 6.20671 4.52667 6.00004 4 6.00004C2.89333 6.00004 2 6.89337 2 8.00004C2 9.10671 2.89333 10 4 10C4.52667 10 5 9.79337 5.36 9.46004L10.0587 12.2054C10.0211 12.3563 10.0014 12.5112 10 12.6667C10 13.0623 10.1173 13.4489 10.3371 13.7778C10.5568 14.1067 10.8692 14.3631 11.2346 14.5145C11.6001 14.6658 12.0022 14.7054 12.3902 14.6283C12.7781 14.5511 13.1345 14.3606 13.4142 14.0809C13.6939 13.8012 13.8844 13.4448 13.9616 13.0569C14.0387 12.6689 13.9991 12.2668 13.8478 11.9013C13.6964 11.5359 13.44 11.2235 13.1111 11.0038C12.7822 10.784 12.3956 10.6667 12 10.6667Z" fill="black"/>
               </svg>
             </a>
-            <a href="#" class="flex items-center gap-1 text-white font-semibold">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.08 7L11.08 8L14.52 4.55L11 1L10 2L11.8 3.8H2.00004V5.2H11.82L10.08 7ZM5.86004 9L4.86004 8L1.42004 11.5L4.91004 15L5.91004 14L4.10004 12.2H14V10.8H4.10004L5.86004 9Z" fill="black"/>
+            <RouterLink :to="{ name:'ProductDetail', params:{ id:item.id }, state:{ product:item } }" class="flex items-center gap-1 text-white font-semibold">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="black" class="size-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
               </svg>
-            </a>
+            </RouterLink>
             <a href="#" class="flex items-center gap-1 text-white font-semibold" @click.prevent="toggleClick(index)">
               <svg :class="likedItems.has(index) ? 'stroke-[#E97171] fill-[#E97171]' : 'stroke-black'" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.99973 14.0361C-5.33333 6.66669 3.99999 -1.33331 7.99973 3.72539C12 -1.33331 21.3333 6.66669 7.99973 14.0361Z" stroke="" stroke-width="1.8"/>
@@ -127,10 +127,10 @@ watch([sortedProduct, props.perPage], () => {
           </a>
           <RouterLink
               :to="{ name:'ProductDetail', params:{ id:item.id }, state:{ product:item } }" class="flex items-center gap-1 text-white font-semibold">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10.08 7L11.08 8L14.52 4.55L11 1L10 2L11.8 3.8H2.00004V5.2H11.82L10.08 7ZM5.86004 9L4.86004 8L1.42004 11.5L4.91004 15L5.91004 14L4.10004 12.2H14V10.8H4.10004L5.86004 9Z" fill="white"/>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
-            Compare
+            Info
           </RouterLink>
           <a href="#" class="flex items-center gap-1 text-white font-semibold" @click.prevent="toggleClick(index)">
             <svg :class="likedItems.has(index) ? 'stroke-[#E97171] fill-[#E97171]' : 'stroke-white'" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">

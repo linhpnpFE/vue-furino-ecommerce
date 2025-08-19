@@ -1,19 +1,20 @@
-<script setup>
-import { ref, watch, onMounted } from 'vue'
+<script setup lang="ts">
+import { ref, watch, toRefs } from 'vue'
 
-const props = defineProps({
-  // [{ id:'desc', label:'Description' }, ...]
-  tabs: { type: Array, required: true },
-  initial: String, // id tab mở đầu
-})
+const _props = defineProps<{
+  tabs: Array<{ id: string; label: string }>
+  initial?: string
+  slotProps?: Record<string, any>
+}>()
 
-const activeId = ref(props.initial || (props.tabs[0] && props.tabs[0].id))
+const { tabs, initial, slotProps } = toRefs(_props)
 
-// nếu thay props.tabs/initial sau khi mount
-watch(() => [props.tabs, props.initial], () => {
-  if (!props.tabs?.length) return
-  if (!activeId.value || !props.tabs.some(t => t.id === activeId.value)) {
-    activeId.value = props.initial || props.tabs[0].id
+const activeId = ref(initial?.value || (tabs.value?.[0] && tabs.value[0].id))
+
+watch(() => [tabs.value, initial?.value], () => {
+  if (!tabs.value?.length) return
+  if (!activeId.value || !tabs.value.some(t => t.id === activeId.value)) {
+    activeId.value = initial?.value || tabs.value[0].id
   }
 }, { immediate: true })
 </script>
@@ -33,11 +34,8 @@ watch(() => [props.tabs, props.initial], () => {
       </button>
     </div>
 
-    <section
-        v-for="t in tabs" :key="t.id"
-        v-show="activeId === t.id"
-    >
-      <slot :name="t.id">
+    <section v-for="t in tabs" :key="t.id" v-show="activeId === t.id">
+      <slot :name="t.id" v-bind="slotProps || {}">
         <div class="text-9F9F9F">No content for tab "{{ t.label }}".</div>
       </slot>
     </section>

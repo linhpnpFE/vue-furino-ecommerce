@@ -53,7 +53,7 @@
       </div>
     </div>
   </div>
-  <footer class="border-t border-t-B0B0B0 py-10">
+  <footer class="border-t border-t-D9D9D9 py-10">
     <div class="container">
       <div class="xl:flex xl:gap-20 justify-between mb-10">
         <div class="max-w-[285px] flex-shrink-0 mb-10 xl:mb-0">
@@ -91,7 +91,7 @@
           </div>
         </div>
       </div>
-      <div class="xl:pt-8 text-sm xl:border-t xl:border-t-B0B0B0">
+      <div class="xl:pt-8 text-sm xl:border-t xl:border-t-D9D9D9">
         2023 furino. All rights reverved
       </div>
     </div>
