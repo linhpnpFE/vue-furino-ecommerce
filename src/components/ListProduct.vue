@@ -1,6 +1,8 @@
 <script setup>
 import { computed, ref, watch} from "vue";
 import {products} from "@/data/products.typed.ts";
+import { useAddToCart } from "@/composables/useAddToCart";
+const { addToCart } = useAddToCart();
 
 const props = defineProps({
   limit: Number,
@@ -68,6 +70,10 @@ watch([sortedProduct, props.perPage], () => {
   }
 })
 
+function onAdd() {
+  addToCart(props.product);
+}
+
 </script>
 
 <template>
@@ -91,7 +97,7 @@ watch([sortedProduct, props.perPage], () => {
           </template>
         </div>
         <div class="xl:hidden flex items-center gap-6">
-          <button class="py-3 px-8 text-white bg-B88E2F font-semibold rounded">Add to cart</button>
+          <button @click="onAdd" class="py-3 px-8 text-white bg-B88E2F font-semibold rounded">Add to cart</button>
           <div class="flex items-center justify-center gap-4">
             <a href="#" class="flex items-center gap-1 text-white font-semibold">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
