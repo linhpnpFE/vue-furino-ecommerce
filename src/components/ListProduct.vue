@@ -70,8 +70,8 @@ watch([sortedProduct, props.perPage], () => {
   }
 })
 
-function onAdd() {
-  addToCart(props.product);
+function onAdd(p) {
+  addToCart(p)
 }
 
 </script>
@@ -97,7 +97,7 @@ function onAdd() {
           </template>
         </div>
         <div class="xl:hidden flex items-center gap-6">
-          <button @click="onAdd" class="py-3 px-8 text-white bg-B88E2F font-semibold rounded">Add to cart</button>
+          <button @click="onAdd(item)" class="py-3 px-8 text-white bg-B88E2F font-semibold rounded">Add to cart</button>
           <div class="flex items-center justify-center gap-4">
             <a href="#" class="flex items-center gap-1 text-white font-semibold">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -123,7 +123,7 @@ function onAdd() {
         {{item.tag}}
       </div>
       <div class="hidden xl:flex flex-col items-center justify-center bg-3A3A3A/50 opacity-0 invisible transition-all group-hover:opacity-100 group-hover:visible absolute inset-0 gap-6">
-        <button class="py-3 px-14 bg-white text-B88E2F font-semibold">Add to cart</button>
+        <button @click="onAdd(item)" class="py-3 px-14 bg-white text-B88E2F font-semibold">Add to cart</button>
         <div class="flex items-center justify-center gap-4">
           <a href="#" class="flex items-center gap-1 text-white font-semibold">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
